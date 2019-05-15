@@ -23,8 +23,16 @@ namespace LaunchpadChallenge.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSpaceXLaunchpadInformation([FromQuery]LaunchpadFilter filter)
         {
-            var launchpads = await launchpadService.GetLaunchpads(filter);
-            return Ok(launchpads);
+            try
+            {
+                var launchpads = await launchpadService.GetLaunchpads(filter);
+                return Ok(launchpads);
+            }
+            catch (Exception ex)
+            {
+                //TODO: LOG
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }
