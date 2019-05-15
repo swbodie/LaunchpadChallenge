@@ -17,9 +17,11 @@ namespace Application
             this.launchpadRepository = launchpadRepository;
         }
 
-        public async Task<IEnumerable<Launchpad>> GetLaunchpads()
+        public async Task<IEnumerable<Launchpad>> GetLaunchpads(LaunchpadFilter launchpadFilter)
         {
-            return await launchpadRepository.GetLaunchpads();
+            var launchpads = await launchpadRepository.GetLaunchpads();
+
+            return launchpadFilter.Filter(launchpads);
         }
     }
 }

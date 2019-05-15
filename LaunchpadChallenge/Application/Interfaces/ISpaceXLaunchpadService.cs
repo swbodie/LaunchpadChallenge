@@ -8,6 +8,6 @@ namespace Application.Interfaces
 {
     public interface ISpaceXLaunchpadService
     {
-        Task<IEnumerable<Launchpad>> GetLaunchpads();
+        Task<IEnumerable<Launchpad>> GetLaunchpads(LaunchpadFilter filter);
     }
 }

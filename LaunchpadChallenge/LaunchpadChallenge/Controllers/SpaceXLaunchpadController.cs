@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +21,9 @@ namespace LaunchpadChallenge.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSpaceXLaunchpadInformation()
+        public async Task<IActionResult> GetSpaceXLaunchpadInformation([FromQuery]LaunchpadFilter filter)
         {
-            var launchpads = await launchpadService.GetLaunchpads();
+            var launchpads = await launchpadService.GetLaunchpads(filter);
             return Ok(launchpads);
         }
     }
