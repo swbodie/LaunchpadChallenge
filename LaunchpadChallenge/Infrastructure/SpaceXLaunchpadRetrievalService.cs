@@ -14,9 +14,9 @@ namespace Infrastructure
     {
         private readonly RestClient client;
 
-        public SpaceXLaunchpadRetrievalService()
+        public SpaceXLaunchpadRetrievalService(string apiUrl)
         {
-            this.client = new RestClient("https://api.spacexdata.com/v2/");
+            this.client = new RestClient(apiUrl);
         }
 
         public async Task<IEnumerable<Launchpad>> GetLaunchpads()

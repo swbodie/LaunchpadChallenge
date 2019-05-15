@@ -37,7 +37,7 @@ namespace LaunchpadChallenge
 
             var builder = new ContainerBuilder();
 
-            builder.RegisterModule(new DependencyInjectionModule());
+            builder.RegisterModule(new DependencyInjectionModule(Configuration.GetSection("ExternalUrls").GetSection("SpaceXUrl").Value));
 
             builder.Populate(services);
             var container = builder.Build();
